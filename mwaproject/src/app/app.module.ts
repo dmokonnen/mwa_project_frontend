@@ -10,6 +10,7 @@ import { CenterlayoutComponent } from './centerlayout/centerlayout.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { CommentsComponent } from './comments/comments.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommentsComponent } from './comments/comments.component';
     CenterlayoutComponent,
     PostCreateComponent,
     PostListComponent,
-    CommentsComponent
+    CommentsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
