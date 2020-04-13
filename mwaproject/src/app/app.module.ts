@@ -16,10 +16,14 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { CommentsComponent } from './comments/comments.component';
 import { HomeComponent } from './home/home.component';
+<<<<<<< HEAD
 import { LoginComponent } from './auth/login_singup/login.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+=======
+import { LogoutComponent } from './logout/logout.component';
+>>>>>>> d01afcebb770babaebdb7231f6821969396aa587
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { AppComponent } from './app.component';
     PostListComponent,
     CommentsComponent,
     HomeComponent,
+<<<<<<< HEAD
     LoginComponent
+=======
+    LogoutComponent
+>>>>>>> d01afcebb770babaebdb7231f6821969396aa587
   ],
   imports: [
     BrowserModule,
