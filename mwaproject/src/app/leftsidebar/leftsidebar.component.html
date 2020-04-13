@@ -1,7 +1,8 @@
 <aside class="sidebar static">
   <div class="widget">
     <h4 class="widget-title">Shortcuts</h4>
-    <ul class="naves">
+    <ul  *ngIf = "userIsAuthenticated"  class="naves">    
+      <!-- if logged in can perform the follwong tasks -->
       <li>
         <i class="ti-clipboard"></i>
         <a href="newsfeed.html" title="">News feed</a>
@@ -44,7 +45,7 @@
       </li>
       <li>
         <i class="ti-power-off"></i>
-        <a href="landing.html" title="">Logout</a>
+        <a  href="" (click)="onLogout($event)" >Logout</a>
       </li>
     </ul>
   </div><!-- Shortcuts -->

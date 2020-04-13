@@ -26,9 +26,21 @@
               "src/fonts"
             ],
             "styles": [
-              "src/styles.css", "node_modules/bootstrap/dist/css/bootstrap.min.css","src/css/main.min.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/css/main.min.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js","src/js/backgroundVideo.js", "src/js/strip.pkgd.min.js","src/js/script.js", "src/js/main.min.js","src/js/map-init.js","node_modules/jquery/dist/jquery.min.js", "node_modules/bootstrap/dist/js/bootstrap.js"]
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/js/backgroundVideo.js",
+              "src/js/strip.pkgd.min.js",
+              "src/js/script.js",
+              "src/js/main.min.js",
+              "src/js/map-init.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -90,6 +102,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []

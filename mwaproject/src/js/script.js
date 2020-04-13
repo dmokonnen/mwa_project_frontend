@@ -304,7 +304,19 @@ $(function() {
 		$('.login-reg-bg').removeClass('show');
 		return false;
 	  });
-	
+
+	// Edited by me @henok 
+
+	  $('a.join-now').on("click", function(){
+		$('.login-reg-bg').addClass('show');
+		return false;
+	  }); 
+
+	  $('a.forgot-pwd').on("click", function(){
+		$('.log-reg-area').addClass('show');
+		return false;
+	  }); 
+
 //----- count down timer		
 	if ($.isFunction($.fn.downCount)) {
 		$('.countdown').downCount({
