@@ -32,13 +32,12 @@
               "src/css/main.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
+              "../mwaproject/node_modules/jquery/dist/jquery.min.js",
               "src/js/backgroundVideo.js",
               "src/js/strip.pkgd.min.js",
               "src/js/script.js",
               "src/js/main.min.js",
               "src/js/map-init.js",
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },

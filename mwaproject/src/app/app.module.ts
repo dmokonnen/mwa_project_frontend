@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRadioModule} from '@angular/material/radio';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -19,6 +20,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login_singup/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 
@@ -35,6 +37,7 @@ import { AppComponent } from './app.component';
     HomeComponent,
     LoginComponent,
     EditProfileComponent
+
   ],
   imports: [
     BrowserModule,
@@ -45,9 +48,10 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MatRadioModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass:AuthInterceptor, multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

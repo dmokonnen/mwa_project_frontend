@@ -4,40 +4,39 @@ import { NgForm } from '@angular/forms';
 
 @Component({
 
-    templateUrl:'./login.component.html',
+    templateUrl: './login.component.html',
     styleUrls: [ '../../../css/color.css',
     '../../../css/responsive.css', '../../../css/style.css',
     '../../../css/strip.css']
 })
 export class LoginComponent{
 
+    constructor(private authService: AuthService){}
+    onLogin(loginForm: NgForm){
 
-    constructor(private authService:AuthService){}
-
-    onLogin(loginForm:NgForm){
-
-        if(loginForm.invalid)
+        if (loginForm.invalid) {
             return;
+        }
 
-         this.authService.login(loginForm.value.userName, loginForm.value.password); 
+        this.authService.login(loginForm.value.userName, loginForm.value.password);
     }
 
-    onSignup(signupForm:NgForm){
+    onSignup(signupForm: NgForm){
 
-        if(signupForm.invalid)
+        if (signupForm.invalid) {
             return;
+        }
 
         this.authService.createUser(signupForm.value);
     }
-
-
     //TODO:
     forgotPassword(passForgotForm:NgForm){
 
-        if(passForgotForm.invalid)
+        if (passForgotForm.invalid) {
             return;
+        }
         event.preventDefault(); // Prevents browser following the link
         this.authService.OnForgotPassword(passForgotForm.value.email);
     }
-   
+
 }

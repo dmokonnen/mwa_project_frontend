@@ -1,7 +1,16 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	]
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../NodeJS/Examples/Angular/maxproject"
+    },
+    {
+      "path": "../NodeJS/Examples"
+    },
+    {
+      "path": "../ProjectBackend/mwa_socialnetwork"
+    }
+  ]
 }
