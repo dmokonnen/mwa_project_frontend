@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRadioModule} from '@angular/material/radio';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -16,14 +17,11 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { CommentsComponent } from './comments/comments.component';
 import { HomeComponent } from './home/home.component';
-<<<<<<< HEAD
 import { LoginComponent } from './auth/login_singup/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
-=======
-import { LogoutComponent } from './logout/logout.component';
->>>>>>> d01afcebb770babaebdb7231f6821969396aa587
 
 @NgModule({
   declarations: [
@@ -36,11 +34,7 @@ import { LogoutComponent } from './logout/logout.component';
     PostListComponent,
     CommentsComponent,
     HomeComponent,
-<<<<<<< HEAD
     LoginComponent
-=======
-    LogoutComponent
->>>>>>> d01afcebb770babaebdb7231f6821969396aa587
   ],
   imports: [
     BrowserModule,
@@ -50,9 +44,11 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass:AuthInterceptor, multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

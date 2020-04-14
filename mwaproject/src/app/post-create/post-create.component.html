@@ -3,34 +3,35 @@
     <img src="../images/resources/admin2.jpg" alt="">
   </figure>
   <div class="newpst-input">
-    <form method="post">
-      <textarea rows="2" placeholder="write something"></textarea>
+
+    <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+      <textarea rows="2" formControlName="content" placeholder="write something"></textarea>
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+        <img [src]="imagePreview" [alt]="form.value.title">
+      </div>
       <div class="attachments">
         <ul>
-          <li>
+          <!-- <li>
             <i class="fa fa-music"></i>
             <label class="fileContainer">
               <input type="file">
             </label>
-          </li>
+          </li> -->
           <li>
             <i class="fa fa-image"></i>
             <label class="fileContainer">
-              <input type="file">
+              <input type="file" (change)="onImagePicked($event)">
             </label>
           </li>
-          <li>
+          <!-- <li>
             <i class="fa fa-video-camera"></i>
             <label class="fileContainer">
               <input type="file">
             </label>
-          </li>
-          <li>
-            <i class="fa fa-camera"></i>
-            <label class="fileContainer">
-              <input type="file">
-            </label>
-          </li>
+          </li> -->
           <li>
             <button type="submit">Post</button>
           </li>
@@ -39,3 +40,4 @@
     </form>
   </div>
 </div>
+
