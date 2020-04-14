@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
@@ -7,7 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TopbarComponent } from './topbar/topbar.component';
 import { LeftsidebarComponent } from './leftsidebar/leftsidebar.component';
@@ -34,7 +35,9 @@ import { AppComponent } from './app.component';
     PostListComponent,
     CommentsComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    EditProfileComponent
+
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,9 @@ export class AuthService {
 
   private isAuthenticated = false;
   private token: string;
-  private email: string;
+
+  private userId:string;
+
   private tokenTimer: any;
   private userId: string;
   private authStatusListener = new Subject<boolean>();
@@ -21,7 +23,9 @@ export class AuthService {
   getToken() {
     return this.token;
   }
-
+getUserId(){
+  return this.userId;
+}
   getIsAuth() {
     return this.isAuthenticated;
   }
@@ -36,25 +40,27 @@ export class AuthService {
   createUser(authData: AuthData) {
     console.log(authData);
     this.http
-      .post(this.baseUrl + 'users/add-user', authData)
-      .subscribe((response) => {
+      .post(this.baseUrl+ "users/add-user", authData,{headers:{skip:"true"}})
+      .subscribe(response => {
+
         console.log(response);
 
         this.router.navigate(['/']);
       });
   }
+  //this.http.get(url, {headers:{skip:"true"});
 
   // LOGIN
   login(userName: string, password: string) {
-    const authData = { userName, password };
+
+    const authData = { userName: userName, password: password };             
     this.http
-      .post<{ token: string; expiresIn: number, userId: string }>(
-        this.baseUrl + 'login',  authData  )
+      .post<{ token: string; expiresIn: number ;userId:string}>(
+        this.baseUrl + "login",  authData , {headers:{skip:"true"}})
       .subscribe(response => {
-
-        const token = response.token;
-        // console.log(response.token);
-
+        const token = response.token; 
+        const userId = response.userId;
+        console.log(response.userId);
         this.token = token;
         if (token) {
           const expiresInDuration = response.expiresIn;
@@ -65,8 +71,9 @@ export class AuthService {
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
-          this.saveAuthData(token, expirationDate, this.userId);
-          this.router.navigate(['/']);
+
+          this.saveAuthData(token, expirationDate,userId);
+          this.router.navigate(["/"]);
         }
       });
   }
@@ -80,8 +87,8 @@ export class AuthService {
     const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
     if (expiresIn > 0) {
       this.token = authInformation.token;
-      this.isAuthenticated = true;
       this.userId = authInformation.userId;
+      this.isAuthenticated = true;           
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);  // user is  authenticated  so for future requests let them know it
     }
@@ -104,31 +111,36 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  // STORE THE TOKEN TO LOCAL STORAGE
-  private saveAuthData(token: string, expirationDate: Date, userId: string) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('expiration', expirationDate.toISOString());
-    localStorage.setItem('userId', userId);
+
+  //STORE THE TOKEN TO LOCAL STORAGE
+  private saveAuthData(token: string, expirationDate: Date, userId) {
+    localStorage.setItem("token", token);
+    localStorage.setItem("expiration", expirationDate.toISOString());
+    localStorage.setItem("userId", userId);
+
   }
 
   private clearAuthData() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expiration');
-    localStorage.removeItem('userId');
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiration");
+    localStorage.removeItem("userId");
+
   }
 
   private getAuthData() {
-    const token = localStorage.getItem('token');
-    const expirationDate = localStorage.getItem('expiration');
-    const userId = localStorage.getItem('userId');
-    if (!token || !expirationDate) {
+    const token = localStorage.getItem("token");
+    const expirationDate = localStorage.getItem("expiration");
+    const userId = localStorage.getItem("userId");
+
+    if (!token || !expirationDate||!userId) {
       return;
     }
     return {
-      token,
+      token: token,
       expirationDate: new Date(expirationDate),
-      userId
-    };
+      userId:userId
+    }
+
   }
 
 // FORGOT PASSWORD
