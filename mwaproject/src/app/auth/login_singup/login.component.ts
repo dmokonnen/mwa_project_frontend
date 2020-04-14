@@ -30,6 +30,8 @@ export class LoginComponent{
         this.authService.createUser(signupForm.value);
     }
 
+
+    //TODO:
     forgotPassword(passForgotForm:NgForm){
 
         if(passForgotForm.invalid)

@@ -13,9 +13,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const authToken = this.authService.getToken();
+   
+    if (req.headers.get("skip"))
+       return next.handle(req);
 
     const authRequest = req.clone({                      
-     headers: req.headers.set("x-auth-token",  "Bearer "+ authToken) // add our token header name to everyout going request 
+     headers: req.headers.set("x-auth-token", authToken) // add our token header name to everyout going request 
     });
     return next.handle(authRequest);
   }
