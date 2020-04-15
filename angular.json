@@ -32,7 +32,7 @@
               "src/css/main.min.css"
             ],
             "scripts": [
-              "../mwaproject/node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "src/js/backgroundVideo.js",
               "src/js/strip.pkgd.min.js",
               "src/js/script.js",
