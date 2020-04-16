@@ -72,6 +72,21 @@ export class PostService {
         return true;
       });
   }
+  addComment(content: string, postId: string) {
+    const commentData = new FormData();
+    commentData.append('content', content);
+    commentData.append('postId', postId);
+    this.http
+      .post<{ message: string; post: Post }>(
+        'http://localhost:3000/users/comment-post', // to be checked
+        commentData
+      )
+      .subscribe((responseData) => {
+        console.log(responseData.message);
+        this.router.navigate(['/']); // to be checked
+        return true;
+      });
+  }
 
   updatePost(id: string, content: string, image: File | string) {
     let postData: Post | FormData;

@@ -33,12 +33,13 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/js/backgroundVideo.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+      
+              "src/js/main.min.js",
               "src/js/strip.pkgd.min.js",
               "src/js/script.js",
-              "src/js/main.min.js",
               "src/js/map-init.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "src/js/backgroundVideo.js"
             ]
           },
           "configurations": {

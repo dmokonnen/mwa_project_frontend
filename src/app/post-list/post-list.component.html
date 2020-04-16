@@ -1,7 +1,7 @@
 <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
   <span class="sr-only">Loading...</span>
 </div>
-<div class="central-meta item" multi="true" *ngIf="posts.length > 0 && !isLoading"></div>
+<!-- <div class="central-meta item" multi="true" *ngIf="posts.length > 0 && !isLoading"></div> -->
 <div class="central-meta item" *ngFor="let post of posts">
   <div class="user-post">
     <div class="friend-info">
@@ -18,12 +18,6 @@
         <div class="we-video-info">
           <ul>
             <li>
-              <span class="views" data-toggle="tooltip" title="views">
-                <i class="fa fa-eye"></i>
-                <ins>1.2k</ins>
-              </span>
-            </li>
-            <li>
               <span class="comment" data-toggle="tooltip" title="Comments">
                 <i class="fa fa-comments-o"></i>
                 <ins>52</ins>
@@ -35,48 +29,7 @@
                 <ins>2.2k</ins>
               </span>
             </li>
-            <li>
-              <span class="dislike" data-toggle="tooltip" title="dislike">
-                <i class="ti-heart-broken"></i>
-                <ins>200</ins>
-              </span>
-            </li>
-            <li class="social-media">
-              <div class="menu">
-                <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a>
-                  </div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a>
-                  </div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a>
-                  </div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
-                  </div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
-                  </div>
-                </div>
-                <div class="rotater">
-                  <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
-                  </div>
-                </div>
 
-              </div>
-            </li>
           </ul>
         </div>
         <div class="description">
@@ -88,14 +41,11 @@
       </div>
     </div>
     <div class="coment-area">
-      <app-comments></app-comments>
+      <app-comments postId="{{post.id}}"></app-comments>
     </div>
   </div>
-  <!-- <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
-    (page)="onChangedPage($event)" *ngIf="posts.length > 0"></mat-paginator> -->
-  <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)">
+</div>
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" showFirstLastButtons>
   </mat-paginator>
 
   <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && isLoading">No posts added yet!</p>
-</div>
-

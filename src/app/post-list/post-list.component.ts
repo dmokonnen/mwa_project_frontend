@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Post } from '../services/post.model';
 import { PostService } from '../services/post.service';
@@ -28,6 +29,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   userId: string;
   private postsSub: Subscription;
   private authStatusSub: Subscription;
+
+
 
   constructor(
     public postsService: PostService,
@@ -68,7 +71,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   //     this.postsService.getPosts(this.postsPerPage, this.currentPage);
   //   });
   // }
-
+  
   ngOnDestroy() {
     this.postsSub.unsubscribe();
     this.authStatusSub.unsubscribe();
