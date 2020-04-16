@@ -9,8 +9,8 @@
         <img src="../images/resources/friend-avatar10.jpg" alt="">
       </figure>
       <div class="friend-name">
-        <ins><a href="time-line.html" title="">Janice Griffith</a></ins>
-        <span>published: june,2 2018 19:PM</span>
+        <ins><a href="time-line.html" title="">{{post.creator.firstName}} {{post.creator.lastName}}</a></ins>
+        <span>published: {{ post.postTime | date:'medium' }}</span>
       </div>
       <div class="post-meta">
         <!-- <img src="../images/resources/user-post.jpg" alt=""> -->
@@ -91,8 +91,11 @@
       <app-comments></app-comments>
     </div>
   </div>
-  <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
-    (page)="onChangedPage($event)" *ngIf="posts.length > 0"></mat-paginator>
+  <!-- <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangedPage($event)" *ngIf="posts.length > 0"></mat-paginator> -->
+  <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)">
+  </mat-paginator>
+
   <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && isLoading">No posts added yet!</p>
 </div>
 
