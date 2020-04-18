@@ -28,7 +28,9 @@ export class PostService {
                 id: post._id,
                 imagePath: post.imagePath,
                 creator: post.owner,
-                postTime: post.postTime
+                postTime: post.postTime,
+                comments: post.comments,
+                likedBy: post.likedBy
               };
             }),
             maxPosts: postData.maxPosts,
@@ -72,10 +74,12 @@ export class PostService {
         return true;
       });
   }
+  
   addComment(content: string, postId: string) {
     const commentData = new FormData();
     commentData.append('content', content);
     commentData.append('postId', postId);
+    console.log(commentData);
     this.http
       .post<{ message: string; post: Post }>(
         'http://localhost:3000/users/comment-post', // to be checked
@@ -88,27 +92,27 @@ export class PostService {
       });
   }
 
-  updatePost(id: string, content: string, image: File | string) {
-    let postData: Post | FormData;
-    if (typeof image === 'object') {
-      postData = new FormData();
-      postData.append('id', id);
-      postData.append('content', content);
-      postData.append('image', image);
-    } else {
-      postData = {
-        id,
-        content,
-        imagePath: image,
-        creator: null,
-      };
-    }
-    this.http
-      .put('http://localhost:3000/users/posts/' + id, postData)
-      .subscribe((response) => {
-        this.router.navigate(['/']);
-      });
-  }
+  // updatePost(id: string, content: string, image: File | string) {
+  //   let postData: Post | FormData;
+  //   if (typeof image === 'object') {
+  //     postData = new FormData();
+  //     postData.append('id', id);
+  //     postData.append('content', content);
+  //     postData.append('image', image);
+  //   } else {
+  //     postData = {
+  //       id,
+  //       content,
+  //       imagePath: image,
+  //       creator: null,
+  //     };
+  //   }
+  //   this.http
+  //     .put('http://localhost:3000/users/posts/' + id, postData)
+  //     .subscribe((response) => {
+  //       this.router.navigate(['/']);
+  //     });
+  // }
 
   deletePost(postId: string) {
     return this.http.delete('http://localhost:3000/users/posts/' + postId);

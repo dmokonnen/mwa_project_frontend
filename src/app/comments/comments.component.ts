@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PostService } from '../services/post.service';
 import { Post } from '../services/post.model';
+declare var $: any;
 
 @Component({
   selector: "app-comments",
@@ -24,12 +25,14 @@ export class CommentsComponent implements OnInit {
   isLoading = false;
   form: FormGroup;
   postid: string;
+  content: string;
 
   constructor(public postsService: PostService, public route: ActivatedRoute) {}
 
   ngOnInit() {
     this.form = new FormGroup({
-      content: new FormControl(null, { validators: [Validators.required] })
+      content: new FormControl(null, { validators: [Validators.required] }),
+      postId: new FormControl(null, { validators: [Validators.required] })
     });
   }
   onEnter() {
@@ -37,7 +40,8 @@ export class CommentsComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    console.log(this.form.value.postid);
+    console.log(this.form.value.content);
+    console.log(this.form.value.postId);
     console.log(this.postid);
     this.postsService.addComment(this.form.value.content, this.form.value.postId);
     this.isLoading = false;

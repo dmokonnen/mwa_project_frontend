@@ -41,29 +41,30 @@ export class PostCreateComponent implements OnInit {
         asyncValidators: [mimeType],
       }),
     });
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('postId')) {
-        this.mode = 'edit';
-        this.postId = paramMap.get('postId');
-        this.isLoading = true;
-        this.postsService.getPost(this.postId).subscribe((postData) => {
-          this.isLoading = false;
-          this.post = {
-            id: postData._id,
-            content: postData.content,
-            imagePath: postData.imagePath,
-            creator: postData.creator,
-          };
-          this.form.setValue({
-            content: this.post.content,
-            image: this.post.imagePath,
-          });
-        });
-      } else {
-        this.mode = 'create';
-        this.postId = null;
-      }
-    });
+    // this.route.paramMap.subscribe((paramMap: ParamMap) => {
+    //   if (paramMap.has('postId')) {
+    //     this.mode = 'edit';
+    //     this.postId = paramMap.get('postId');
+    //     this.isLoading = true;
+    //     this.postsService.getPost(this.postId).subscribe((postData) => {
+    //       this.isLoading = false;
+    //       this.post = {
+    //         id: postData._id,
+    //         content: postData.content,
+    //         imagePath: postData.imagePath,
+    //         creator: postData.creator,
+    //         postTime: postData.postTime,
+    //       };
+    //       this.form.setValue({
+    //         content: this.post.content,
+    //         image: this.post.imagePath,
+    //       });
+    //     });
+    //   } else {
+    //     this.mode = 'create';
+    //     this.postId = null;
+    //   }
+    // });
   }
 
   onImagePicked(event: Event) {
@@ -87,13 +88,15 @@ export class PostCreateComponent implements OnInit {
         this.form.value.content,
         this.form.value.image
         );
-    } else {
-      this.postsService.updatePost(
-        this.postId,
-        this.form.value.content,
-        this.form.value.image
-      );
     }
+    // else {
+    //   this.postsService.updatePost(
+    //     this.postId,
+    //     this.form.value.content,
+    //     this.form.value.image
+    //   );
+    // }
+    
     this.isLoading = false;
     this.form.reset();
   }

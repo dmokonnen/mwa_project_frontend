@@ -1,0 +1,7 @@
+<div class="user-post">
+    <app-post-detail postTime="{{postTime}}" likedBy="{{likedBy}}" creator="{{creator}}" content="{{content}}" imagePath="{{imagePath}}" ></app-post-detail>
+    <!-- <app-post-detail post="{{post}}" ></app-post-detail> -->
+    <div class="coment-area">
+        <app-comments [postId]="postId" comments="comments" ></app-comments>
+    </div>
+</div>

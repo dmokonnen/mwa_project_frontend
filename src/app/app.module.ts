@@ -21,6 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
+import { PostComponent } from './post/post.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { AppComponent } from './app.component';
     CommentsComponent,
     HomeComponent,
     LoginComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    PostComponent,
+    PostDetailComponent
 
   ],
   imports: [

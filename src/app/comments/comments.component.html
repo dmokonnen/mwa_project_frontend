@@ -26,8 +26,18 @@
     <div class="post-comt-box">
       <form [formGroup]="form" *ngIf="!isLoading">
         <textarea type="text" formControlName="content" placeholder="Post your comment" (keyup.enter)="onEnter()"></textarea>
-        <input type="text"  value="{{postId}}" class="something" name='postId' />
+        <input type="text"  value="{{postId}}" class="something" formControlName='postId' />
         <span #pid>{{postId}}</span>
+      </form>
+    </div>
+    <div class="post-comt-box">
+      <form class="commentForm" method="post" action="/comment/add">
+        <textarea id="pcomment" name="pcomment" class="comment" placeholder="Post your comment"></textarea>
+        <div class="add-smiles">
+          <span class="em em-expressionless" title="add icon"></span>
+        </div>
+        <input type="hidden" value="{{postId}}" class="something" name="postId" />
+        <button type="submit"></button>
       </form>
     </div>
   </li>

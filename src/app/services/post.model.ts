@@ -2,5 +2,8 @@ export interface Post {
   id: string;
   content: string;
   imagePath: string;
-  creator: string;
+  postTime: Date;
+  likedBy: any;
+  comments: any;
+  creator: any;
 }

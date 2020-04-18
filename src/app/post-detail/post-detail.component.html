@@ -1,0 +1,37 @@
+<div class="friend-info">
+    <figure>
+        <img src="../images/resources/friend-avatar10.jpg" alt="">
+    </figure>
+    <div class="friend-name">
+        <ins><a href="time-line.html" title="">{{creator}}</a></ins>
+        <span>published: {{ postTime | date:'medium' }}</span>
+    </div>
+    <div class="post-meta">
+        <!-- <img src="../images/resources/user-post.jpg" alt=""> -->
+        <img [src]="imagePath" [alt]="content">
+        <div class="we-video-info">
+            <ul>
+                <li>
+                    <span class="comment" data-toggle="tooltip" title="Comments">
+                        <i class="fa fa-comments-o"></i>
+                        <ins>52</ins>
+                    </span>
+                </li>
+                <li>
+                    <span class="like" data-toggle="tooltip" title="like">
+                        <i class="ti-heart"></i>
+                        <ins>2.2k</ins>
+                    </span>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="description">
+
+            <p>
+                {{content}}
+            </p>
+        </div>
+    </div>
+</div>
